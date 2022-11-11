@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 初始化事务 -->
+    <integer name="init_sdk">0</integer>
+    <integer name="init_sdk_failure">0</integer>
+    <integer name="init_in_progress">30</integer>
+    <integer name="init_sdk_success">50</integer>
+    <integer name="init_wait_connect">55</integer>
+    <integer name="init_camera_controller">60</integer>
+    <integer name="init_remote_hareware_controller">65</integer>
+    <integer name="init_virtual_stick_controller">70</integer>
+    <integer name="init_media_data_controller">75</integer>
+    <integer name="init_gimbal_controller">80</integer>
+</resources>

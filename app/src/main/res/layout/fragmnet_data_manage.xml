@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/lucencyBlack"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/dataPhotoListTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/preview_inspection_photo"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CheckBox
+            android:id="@+id/wirePhotoCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/wire_photo"
+            android:textColor="@color/white"
+            android:buttonTint="@color/white"
+            android:checked="true"
+            app:layout_constraintBottom_toBottomOf="@+id/dataPhotoListTitle"
+            app:layout_constraintStart_toEndOf="@+id/dataPhotoListTitle"
+            app:layout_constraintTop_toTopOf="@+id/dataPhotoListTitle" />
+
+        <CheckBox
+            android:id="@+id/treeBarrierPhotoCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/tree_barrier_photo"
+            android:textColor="@color/white"
+            android:buttonTint="@color/white"
+            android:checked="true"
+            app:layout_constraintBottom_toBottomOf="@+id/wirePhotoCheckBox"
+            app:layout_constraintStart_toEndOf="@+id/wirePhotoCheckBox"
+            app:layout_constraintTop_toTopOf="@+id/wirePhotoCheckBox" />
+
+        <ImageView
+            android:id="@+id/closeButton"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/close_button_white" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/dataPhotoList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dataPhotoListTitle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

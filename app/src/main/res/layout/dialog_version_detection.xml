@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable name="isPulled" type="androidx.databinding.ObservableBoolean"/>
+        <variable name="isLastVersion" type="androidx.databinding.ObservableBoolean"/>
+        <variable name="detectionMessage" type="androidx.databinding.ObservableField&lt;String>"/>
+        <variable name="packageDownProgress" type="androidx.databinding.ObservableInt"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:translationZ="5dp"
+            app:layout_constraintStart_toStartOf="@+id/cardView"
+            app:layout_constraintTop_toTopOf="@+id/cardView" />
+
+        <ImageView
+            android:id="@+id/closeButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:translationZ="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/close_button_black" />
+
+        <ProgressBar
+            android:id="@+id/detectionProgress"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:translationZ="5dp"
+            android:visibility="@{!isPulled &amp;&amp; !isLastVersion ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@+id/cardView"
+            app:layout_constraintEnd_toEndOf="@+id/cardView"
+            app:layout_constraintStart_toStartOf="@+id/cardView"
+            app:layout_constraintTop_toTopOf="@+id/cardView" />
+
+        <ImageView
+            android:id="@+id/successImg"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:translationZ="5dp"
+            android:visibility="@{isPulled &amp;&amp; isLastVersion ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@+id/cardView"
+            app:layout_constraintEnd_toEndOf="@+id/cardView"
+            app:layout_constraintStart_toStartOf="@+id/cardView"
+            app:layout_constraintTop_toTopOf="@+id/cardView"
+            app:srcCompat="@drawable/success" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="detectionProgress,successImg"
+            tools:layout_editor_absoluteX="20dp"
+            tools:layout_editor_absoluteY="181dp" />
+
+        <TextView
+            android:id="@+id/detectionProgressMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@{detectionMessage}"
+            android:textSize="18sp"
+            android:translationZ="5dp"
+            android:visibility="@{isPulled ^ isLastVersion ? View.GONE : View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="@+id/cardView"
+            app:layout_constraintStart_toStartOf="@+id/cardView"
+            app:layout_constraintTop_toBottomOf="@+id/barrier" />
+
+        <WebView
+            android:id="@+id/productWebView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:translationZ="5dp"
+            android:visibility="@{isPulled &amp;&amp; !isLastVersion ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toTopOf="@+id/packageDownloadButton"
+            app:layout_constraintEnd_toEndOf="@+id/cardView"
+            app:layout_constraintStart_toStartOf="@+id/cardView"
+            app:layout_constraintTop_toBottomOf="@+id/logo">
+
+        </WebView>
+
+        <ProgressBar
+            android:id="@+id/packageDownloadProgress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:max="100"
+            android:progress="@{packageDownProgress}"
+            android:translationZ="5dp"
+            android:visibility="@{isPulled &amp;&amp; !isLastVersion ? View.VISIBLE : View.GONE}"
+            android:alpha="0"
+            app:layout_constraintBottom_toBottomOf="@+id/packageDownloadButton"
+            app:layout_constraintEnd_toStartOf="@+id/packageDownloadButton"
+            app:layout_constraintStart_toStartOf="@+id/cardView"
+            app:layout_constraintTop_toTopOf="@+id/packageDownloadButton" />
+
+        <Button
+            android:id="@+id/packageDownloadButton"
+            android:layout_width="70dp"
+            android:layout_height="35dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/colorAccent"
+            android:text="@string/down_package"
+            android:textColor="@color/white"
+            android:translationZ="5dp"
+            android:visibility="@{isPulled &amp;&amp; !isLastVersion ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@+id/cardView"
+            app:layout_constraintEnd_toEndOf="@+id/cardView" />
+
+        <TextView
+            android:id="@+id/packageDownloadText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{packageDownProgress + "%"}'
+            android:translationZ="5dp"
+            android:alpha="0"
+            android:visibility="@{isPulled &amp;&amp; !isLastVersion ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@+id/packageDownloadButton"
+            app:layout_constraintEnd_toEndOf="@+id/packageDownloadButton"
+            app:layout_constraintStart_toStartOf="@+id/packageDownloadButton"
+            app:layout_constraintTop_toTopOf="@+id/packageDownloadButton" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

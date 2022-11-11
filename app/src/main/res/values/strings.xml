@@ -1,0 +1,147 @@
+<resources>
+    <string name="app_name">JZI MS2</string>
+    <string name="unit_meter">米</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确定</string>
+    <string name="unknown">未知</string>
+    <string name="preference_file_key">com.jizhenkeji.mainnetinspection.PREFERENCE_FILE_KEY</string>
+    <string name="time">时间</string>
+    <string name="tower_num">塔号</string>
+    <string name="latitude">纬度</string>
+    <string name="longitude">经度</string>
+
+    <!-- 蓝牙配对部分 -->
+    <string name="bluetooth_search_error">开启蓝牙搜索失败</string>
+
+    <!-- 初始化MSDK事务 -->
+    <string name="init_sdk">正在初始化SDK...</string>
+    <string name="init_sdk_failure">初始化SDK失败</string>
+    <string name="init_in_progress">正在初始化：</string>
+    <string name="init_sdk_success">初始化SDK成功</string>
+    <string name="init_wait_connect">等待飞机连接</string>
+    <string name="init_camera_controller">初始化摄像设备控制组件</string>
+    <string name="init_camera_controller_error">初始化摄像设备控制组件失败</string>
+    <string name="init_remote_hareware_controller">初始化遥控硬件设备控制组件</string>
+    <string name="init_remote_hareware_controller_error">初始化遥控硬件设备控制组件失败</string>
+    <string name="init_virtual_stick_controller">初始化虚拟摇杆控制组件</string>
+    <string name="init_virtual_stick_controller_error">初始化虚拟摇杆控制组件失败</string>
+    <string name="init_media_data_controller">初始化媒体数据控制控制组件</string>
+    <string name="init_media_data_controller_error">初始化媒体数据控制控制组件失败</string>
+    <string name="init_gimbal_controller">初始化云台控制组件</string>
+    <string name="init_gimbal_controller_error">初始化云台控制组件失败</string>
+
+    <!-- 主界面事务 -->
+    <string name="init_state_tag">未知状态</string>
+    <string name="start_flight">开始飞行</string>
+    <string name="settings">设置</string>
+    <string name="help">帮助</string>
+    <string name="data_manage">数据管理</string>
+    <string name="record_mission">记录台账</string>
+    <string name="please_connect_bluetooth">请连接雷达蓝牙设备</string>
+    <string name="skip">跳过</string>
+    <string name="is_continue_skip_radar_configure">跳过此配置将无法正常执行巡检任务！</string>
+
+
+    <!-- 主界面设置菜单 -->
+    <string name="user_state_description">用户状态管理</string>
+    <string name="user_login_failure">未登录</string>
+    <string name="user_state_error">获取用户状态失败</string>
+
+    <string name="is_delete_all_log">是否删除所有日志？</string>
+    <string name="is_delete_photo_cache">是否删除图片缓存？</string>
+
+    <string name="storage_state_description">存储相关管理</string>
+    <string name="internal_storage_field">内置机载存储</string>
+    <string name="external_storage_field">外置SD卡存储</string>
+
+    <string name="log_state_unknown">未知</string>
+
+    <string name="about_app_field">关于软件</string>
+    <string name="detection_update">检测更新</string>
+    <string name="about_team_field">关于我们</string>
+    <string name="about_company_name">广州极臻科技有限公司</string>
+    <string name="about_company_address">地址：广州市天河区五山路华南理工大学北区35号楼404</string>
+    <string name="about_company_contact">电话：18814111338(郑博士)</string>
+    <string name="get_version_information">正在获取版本信息</string>
+    <string name="already_the_latest_version">已经是最新版本</string>
+    <string name="network_request_error">网络请求失败</string>
+    <string name="get_version_error">获取软件信息失败</string>
+    <string name="down_package">下载</string>
+
+    <!-- 事务管理界面 -->
+    <string name="execute_mission">执行任务</string>
+    <string name="manage_mission">台账管理</string>
+    <string name="manage_data">数据管理</string>
+    <string name="please_configure_source">请选择数据源</string>
+
+    <!-- 巡检任务参数配置对话框 -->
+    <string name="next_step">下一步</string>
+    <string name="prev_step">上一步</string>
+    <string name="confirm_parameter">确定</string>
+    <string name="choose_mission">选择巡检任务：</string>
+    <string name="mission_description">请配置所需巡检的任务</string>
+    <string name="mission_mode_description">导线模式：仿线巡检飞行，在飞行过程中对导线进行拍摄，达到对整条导线覆盖拍摄。线树模式：仿线巡检飞行，在导线模式的基础上，同步检测导线下部树障，遇到树障则进行向下拍照记录树障</string>
+    <string name="wire_inspection_mode">导线巡检</string>
+    <string name="tree_inspection_mode">树障巡检</string>
+    <string name="wire_tree_inspection_mode">线树巡检</string>
+    <string name="choose_phase_num">相号：</string>
+    <string name="phase_num_A">A相</string>
+    <string name="phase_num_B">B相</string>
+    <string name="phase_num_C">C相</string>
+    <string name="phase_num_ground_left">左地</string>
+    <string name="phase_num_ground_right">右地</string>
+    <string name="phase_num_description">配置当前巡检导线的相号</string>
+    <string name="choose_tower_num">小号塔号：</string>
+    <string name="tower_num_description">请选择巡检任务中小号塔的编号</string>
+    <string name="choose_flight_speed">巡检飞行速度：</string>
+    <string name="flight_speed_description">进行导线巡检、线树巡检过程中，无人机从起始杆塔飞向终止杆塔的飞行速度，推荐速度：1m/s</string>
+    <string name="choose_horizontal_distance">水平离线距离：</string>
+    <string name="horizontal_distance_description">巡检过程中，无人机水平方向上与导线之间的距离，导线电压等级越大，距导线距离越远，推荐距离：3.5m</string>
+    <string name="choose_vertical_distance">垂直离线距离：</string>
+    <string name="vertical_distance_description">巡检过程中，无人机垂直方向上与导线之间的距离，推荐距离：0.2m</string>
+    <string name="choose_barrier_distance">树障警报距离：</string>
+    <string name="barrier_distance_description">巡检过程中，无人机向下检测树障的警报阈值，低于阈值则进行树障记录</string>
+
+    <!-- 巡检任务管理活动 -->
+    <string name="create_mission">创建台账</string>
+    <string name="cancel_create_mission">取消</string>
+    <string name="confirm_create_mission">确定</string>
+    <string name="mission_create_success">任务创建成功</string>
+    <string name="is_delete_mission">是否确定删除任务？</string>
+
+    <!-- 巡检任务执行活动 -->
+    <string name="choose_inspection_direction">点击C1/C2向左/右方向巡检</string>
+    <string name="start_execute_mission">开始执行巡检任务</string>
+    <string name="pause_execute_mission">巡检任务暂停中</string>
+    <string name="finish_execute_mission">巡检任务执行完毕</string>
+    <string name="distance_to_start_point">距离起始点：</string>
+    <string name="map">地图</string>
+    <!-- 巡检数据管理 -->
+    <string name="unknown_storage_state">未知</string>
+    <string name="internal_storage">内部存储</string>
+    <string name="external_storage">外部存储</string>
+    <string name="is_down_photo">是否下载巡检照片？</string>
+    <string name="is_build_report">是否构建巡检报告？</string>
+    <string name="is_delete_data">是否删除巡检数据？</string>
+    <string name="export_inspection_data">正在导出巡检照片</string>
+    <string name="export_path_error">导出路径异常</string>
+    <string name="export_wire_photo">正在导出导线照片</string>
+    <string name="export_tree_barrier_photo">正在导出树障照片</string>
+    <string name="export_finish">导出巡检照片完毕</string>
+    <string name="export_inspection_report">正在导出巡检报告</string>
+    <string name="export_mission">正在导出台账数据</string>
+    <string name="export_mission_failure">导出台账数据失败</string>
+    <string name="export_mission_success">成功导出台账数据</string>
+    <string name="down_tree_barrier_photo">正在下载树障照片</string>
+    <string name="lose_inspection_data">缺失巡检数据</string>
+    <string name="down_cache_name">cache</string>
+    <string name="report_file_name">树障巡检报告.docx</string>
+    <string name="start_build_report">开始构建报告</string>
+    <string name="finish_build_report">构建报告完成</string>
+    <string name="preview_inspection_photo">预览巡检照片</string>
+    <string name="wire_photo">导线照片</string>
+    <string name="tree_barrier_photo">树障照片</string>
+    <string name="terrain_arcs_photo">地形弧线</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

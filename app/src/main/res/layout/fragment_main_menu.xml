@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="com.jizhenkeji.mainnetinspection.MApplication"/>
+        <import type="dji.common.camera.SettingsDefinitions.StorageLocation"/>
+        <variable name="userState" type="androidx.databinding.ObservableField&lt;String>"/>
+        <variable name="isUserLogin" type="androidx.databinding.ObservableBoolean"/>
+        <variable name="logState" type="androidx.databinding.ObservableField&lt;String>"/>
+        <variable name="photoCacheState" type="androidx.databinding.ObservableField&lt;String>"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:background="@color/lucencyBlack"
+        android:focusable="true">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/menuContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/userPart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:drawableStart="@drawable/point"
+                    android:drawablePadding="10dp"
+                    android:text="@string/user_state_description"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/userLabel"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/userPart"
+                    app:srcCompat="@drawable/user_white" />
+
+                <TextView
+                    android:id="@+id/userStateMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@{userState}"
+                    android:textColor="@{isUserLogin ? @color/rallyGreen : @color/rallyOrange}"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/userLabel"
+                    app:layout_constraintStart_toEndOf="@+id/userLabel"
+                    app:layout_constraintTop_toTopOf="@+id/userLabel" />
+
+                <TextView
+                    android:id="@+id/storagePart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/storage_state_description"
+                    android:drawablePadding="10dp"
+                    android:drawableLeft="@drawable/point"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/userLabel" />
+
+                <TextView
+                    android:id="@+id/logStorage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text='@{"日志缓存大小：" + logState}'
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/storagePart" />
+
+                <ImageView
+                    android:id="@+id/deleteLogs"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/logStorage"
+                    app:layout_constraintStart_toEndOf="@+id/logStorage"
+                    app:layout_constraintTop_toTopOf="@+id/logStorage"
+                    app:srcCompat="@drawable/delete_button_white" />
+
+                <TextView
+                    android:id="@+id/photoStorage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text='@{"图片缓存大小：" + photoCacheState}'
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/deleteLogs" />
+
+                <ImageView
+                    android:id="@+id/deletePhotos"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/photoStorage"
+                    app:layout_constraintStart_toEndOf="@+id/photoStorage"
+                    app:layout_constraintTop_toTopOf="@+id/photoStorage"
+                    app:srcCompat="@drawable/delete_button_white" />
+
+<!--                <TextView-->
+<!--                    android:id="@+id/aboutAppPart"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    android:drawableLeft="@drawable/point"-->
+<!--                    android:drawablePadding="10dp"-->
+<!--                    android:text="@string/about_app_field"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="18sp"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/deletePhotos" />-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/logo"-->
+<!--                    android:layout_width="70dp"-->
+<!--                    android:layout_height="70dp"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/aboutAppPart"-->
+<!--                    app:srcCompat="@drawable/logo" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/aboutAppText"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="16dp"-->
+<!--                    android:text='@{"软件版本：" + MApplication.VERSION}'-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="14sp"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@+id/logo"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/logo"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/logo" />-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/detectionUpdateButton"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="35dp"-->
+<!--                    android:layout_marginStart="16dp"-->
+<!--                    android:background="@color/calmGray"-->
+<!--                    android:text="@string/detection_update"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@+id/aboutAppText"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/aboutAppText"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/aboutAppText" />-->
+
+                <TextView
+                    android:id="@+id/aboutOurPart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:drawableLeft="@drawable/point"
+                    android:drawablePadding="10dp"
+                    android:text="@string/about_team_field"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/deletePhotos" />
+
+                <TextView
+                    android:id="@+id/aboutCompanyName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/about_company_name"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/aboutOurPart" />
+
+                <TextView
+                    android:id="@+id/aboutCompanyAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/about_company_address"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/aboutCompanyName" />
+
+                <TextView
+                    android:id="@+id/aboutCompanyContact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/about_company_contact"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/aboutCompanyAddress" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <ImageView
+            android:id="@+id/closeButton"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/close_button_white" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

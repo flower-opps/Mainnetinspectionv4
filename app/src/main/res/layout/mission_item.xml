@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.jizhenkeji.mainnetinspection.common.MissionEntityTypeConverter"/>
+        <variable name="mission" type="com.jizhenkeji.mainnetinspection.model.entity.MissionWithTowers"/>
+        <variable name="callback" type="com.jizhenkeji.mainnetinspection.adapter.MissionAdapter.MissionClickCallback"/>
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardCornerRadius="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp">
+
+            <TextView
+                android:id="@+id/missionName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/mission_name_tag"
+                android:drawablePadding="10dp"
+                android:text="@{mission.missionEntity.name}"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/voltageLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:drawableStart="@drawable/mission_voltage_tag"
+                android:drawablePadding="10dp"
+                android:text="@{mission.missionEntity.voltageLevel}"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/missionName"
+                app:layout_constraintStart_toEndOf="@+id/missionName"
+                app:layout_constraintTop_toTopOf="@+id/missionName" />
+
+            <TextView
+                android:id="@+id/manageClass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:drawableStart="@drawable/mission_class_tag"
+                android:drawablePadding="10dp"
+                android:text="@{mission.missionEntity.manageClassName}"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/voltageLevel"
+                app:layout_constraintStart_toEndOf="@+id/voltageLevel"
+                app:layout_constraintTop_toTopOf="@+id/voltageLevel" />
+
+            <TextView
+                android:id="@+id/createDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:drawableLeft="@drawable/mission_date_tag"
+                android:drawablePadding="10dp"
+                android:text="@{MissionEntityTypeConverter.dateToString(mission.missionEntity.createDate)}"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/manageClass"
+                app:layout_constraintStart_toEndOf="@+id/manageClass"
+                app:layout_constraintTop_toTopOf="@+id/manageClass" />
+
+            <ImageView
+                android:id="@+id/editMission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:onClick="@{() -> callback.onEditMission(mission)}"
+                app:layout_constraintBottom_toBottomOf="@+id/deleteMission"
+                app:layout_constraintEnd_toStartOf="@+id/deleteMission"
+                app:layout_constraintTop_toTopOf="@+id/deleteMission"
+                app:srcCompat="@drawable/edit" />
+
+            <ImageView
+                android:id="@+id/deleteMission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:onClick="@{() -> callback.onDeleteMission(mission)}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/createDate"
+                app:srcCompat="@drawable/delete" />
+
+            <ImageView
+                android:id="@+id/pdis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:onClick="@{() -> callback.onPhaseSpacing(mission)}"
+                app:layout_constraintBottom_toBottomOf="@+id/deleteMission"
+                app:layout_constraintEnd_toStartOf="@+id/kmlout"
+                app:layout_constraintTop_toTopOf="@+id/kmlout"
+                app:srcCompat="@drawable/ic_phasedistance" />
+
+            <ImageView
+                android:id="@+id/kmlout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:onClick="@{() -> callback.onKmlOut(mission)}"
+                app:layout_constraintBottom_toBottomOf="@+id/deleteMission"
+                app:layout_constraintEnd_toStartOf="@+id/kmlin"
+                app:layout_constraintTop_toTopOf="@+id/kmlin"
+                app:srcCompat="@drawable/ic_kmloutput" />
+
+            <ImageView
+                android:id="@+id/kmlin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:onClick="@{() -> callback.onKmlIn(mission)}"
+                app:layout_constraintBottom_toBottomOf="@+id/deleteMission"
+                app:layout_constraintEnd_toStartOf="@+id/checkMap"
+                app:layout_constraintTop_toTopOf="@+id/checkMap"
+                app:srcCompat="@drawable/ic_kmliput" />
+
+
+            <ImageView
+                android:id="@+id/checkMap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:onClick="@{() -> callback.onSearchTowerPoint(mission)}"
+                app:layout_constraintBottom_toBottomOf="@+id/deleteMission"
+                app:layout_constraintEnd_toStartOf="@+id/exportMission"
+                app:layout_constraintTop_toTopOf="@+id/deleteMission"
+                app:srcCompat="@drawable/ic_map_black" />
+
+            <ImageView
+                android:id="@+id/exportMission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:onClick="@{() -> callback.onExportMission(mission)}"
+                app:layout_constraintBottom_toBottomOf="@+id/deleteMission"
+                app:layout_constraintEnd_toStartOf="@+id/editMission"
+                app:layout_constraintTop_toTopOf="@+id/deleteMission"
+                app:srcCompat="@drawable/ic_export" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

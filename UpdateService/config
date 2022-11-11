@@ -1,0 +1,11 @@
+{
+	"package" : [
+		{
+			"name" : "JZI SeaGull",
+			"version" : "v2.0.0",
+			"description" : "主网巡检机",
+			"size" : 74207232,
+			"package" : "JZI SeaGull.apk"
+		}
+	]
+}

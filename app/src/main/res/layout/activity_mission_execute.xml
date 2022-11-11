@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="viewModel" type="com.jizhenkeji.mainnetinspection.missionexecute.MissionExecuteViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".missionexecute.MissionExecuteActivity">
+
+        <!-- 图传界面显示组件 -->
+<!--        <dji.ux.widget.FPVWidget-->
+<!--            android:id="@+id/FPVWidget"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"/>-->
+
+        <TextureView
+            android:id="@+id/ttv_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp"/>
+
+        <ImageView
+            android:id="@+id/iv_line"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/YOLO5_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="RtlHardcoded">
+
+            <dji.ux.widget.RadarWidget
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+
+        <com.jizhenkeji.mainnetinspection.view.TowerLabelView
+            android:visibility="gone"
+            android:id="@+id/towerLabelView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <dji.ux.widget.FPVOverlayWidget
+            android:id="@+id/fpv_overlay_widget"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/navigationBar"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:padding="5dp"
+            android:translationZ="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.jizhenkeji.mainnetinspection.widget.PreFlightStateWidget
+                android:id="@+id/aircraftStateWidget"
+                android:layout_width="120dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.jizhenkeji.mainnetinspection.widget.CompassWidget
+                android:id="@+id/compassWidget"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/aircraftStateWidget"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <dji.ux.widget.FlightModeWidget
+                android:id="@+id/flightMode"
+                android:layout_width="90dp"
+                android:layout_height="22dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <dji.ux.widget.GPSSignalWidget
+                android:id="@+id/GPSSignalWidget"
+                android:layout_width="40dp"
+                android:layout_height="22dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/remoteControlSignalWidget"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5" />
+
+            <dji.ux.widget.RemoteControlSignalWidget
+                android:id="@+id/remoteControlSignalWidget"
+                android:layout_width="40dp"
+                android:layout_height="22dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/videoSignalWidget"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <dji.ux.widget.VideoSignalWidget
+                android:id="@+id/videoSignalWidget"
+                android:layout_width="40dp"
+                android:layout_height="22dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.jizhenkeji.mainnetinspection.widget.RemainingFlightTimeWidget
+                android:id="@+id/remainingFlightTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/flightMode"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="100dp"
+                android:layout_height="22dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@+id/GPSSignalWidget"
+                app:layout_constraintEnd_toStartOf="@+id/GPSSignalWidget"
+                app:layout_constraintTop_toTopOf="@+id/GPSSignalWidget">
+
+                <dji.ux.widget.BatteryWidget
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:excludeView="singleVoltage" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/executeMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/mission_record_message_background"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="@{viewModel.observableInspectionMessage}"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/navigationBar" />
+
+        <com.jizhenkeji.mainnetinspection.widget.GimbalAngleWidget
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/navigationBar"
+            app:layout_constraintVertical_bias="0.20999998" />
+
+        <com.jizhenkeji.mainnetinspection.widget.RadarInformationWidget
+            android:id="@+id/radarInformationWidget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/map" />
+
+        <TextView
+            android:id="@+id/map"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:drawableStart="@drawable/ic_map"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:text="@string/map"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <dji.ux.widget.controls.CameraControlsWidget
+            android:id="@+id/cameraControlsWidget"
+            android:layout_width="50dp"
+            android:layout_height="213dp"
+            app:layout_constraintBottom_toTopOf="@+id/radarInformationWidget"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/navigationBar" />
+
+        <dji.ux.panel.CameraSettingAdvancedPanel
+            android:id="@+id/cameraSettingAdvancedPanel"
+            android:layout_width="180dp"
+            android:layout_height="263dp"
+            android:gravity="center"
+            android:visibility="gone"
+            tools:ignore="RtlHardcoded"
+            app:layout_constraintEnd_toStartOf="@+id/cameraControlsWidget"
+            app:layout_constraintTop_toTopOf="@+id/cameraControlsWidget" />
+
+        <dji.ux.panel.CameraSettingExposurePanel
+            android:layout_width="180dp"
+            android:layout_height="263dp"
+            android:gravity="center"
+            android:visibility="gone"
+            tools:ignore="RtlHardcoded"
+            app:layout_constraintEnd_toStartOf="@+id/cameraControlsWidget"
+            app:layout_constraintTop_toTopOf="@+id/cameraControlsWidget"/>
+
+        <dji.ux.widget.dashboard.DistanceHomeWidget
+            android:id="@+id/distance_home"
+            android:layout_width="71dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <dji.ux.widget.dashboard.HorizontalVelocityWidget
+            android:id="@+id/horizontal_velocity"
+            android:layout_width="71dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/distance_home" />
+
+        <dji.ux.widget.dashboard.VerticalVelocityWidget
+            android:id="@+id/vertical_velocity"
+            android:layout_width="71dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/horizontal_velocity" />
+
+        <dji.ux.widget.dashboard.AltitudeWidget
+            android:layout_width="71dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/vertical_velocity" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

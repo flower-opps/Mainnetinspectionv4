@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jizhenkeji.mainnetinspection">
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature
+        android:name="android.hardware.usb.host"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.usb.accessory"
+        android:required="true" />
+
+    <application
+        android:name=".MApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logo"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MainNetInspection"
+        android:largeHeap="true"
+        android:requestLegacyExternalStorage="true">
+        <activity android:name=".datamanage.DataManageActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="sensorLandscape"
+            android:exported="false"/>
+        <activity
+            android:name=".missionexecute.MissionExecuteActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="sensorLandscape"
+            android:exported="false"/>
+        <activity
+            android:name=".missionrecord.MissionRecordActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="sensorLandscape"
+            android:exported="false"/>
+        <activity
+            android:name=".missionmanage.MissionManageActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="sensorLandscape"
+            android:exported="false"/>
+        <activity
+            android:name=".main.MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="sensorLandscape"
+            android:exported="false"/>
+        <activity
+            android:name=".initsdk.InitActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="sensorLandscape"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.hardware.usb.action.USB_ACCESSORY_ATTACHED" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.hardware.usb.action.USB_ACCESSORY_ATTACHED"
+                android:resource="@xml/accessory_filter" />
+        </activity>
+
+        <service
+            android:name=".service.AircraftStateMonitorService"
+            android:exported="false" />
+
+        <provider android:name="androidx.core.content.FileProvider"
+            android:authorities="com.jizhenkeji.mainnetinspection.fileprovider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths"/>
+        </provider>
+
+        <meta-data
+            android:name="com.dji.sdk.API_KEY"
+            android:value="a7d7c28f7ce43c8c90aa7203" />
+
+        <uses-library
+            android:name="com.android.future.usb.accessory"
+            android:required="false" />
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+    </application>
+
+</manifest>

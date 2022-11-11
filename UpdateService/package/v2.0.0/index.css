@@ -1,0 +1,20 @@
+body{
+	padding: 15px;
+}
+
+#logo{
+	float: left;
+	margin-right: 20px;
+}
+
+.name{
+	margin-top: 20px;
+}
+
+.bug{
+	margin-top: 20px;
+}
+
+.feature{
+	margin-top: 20px;
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="colorAccent">#33333D</color>
+
+    <color name="black">#000000</color>
+    <color name="textColor">#33333D</color>
+
+    <color name="rallyGreen">#1EB980</color>
+    <color name="rallyDarkGreen">#045D56</color>
+    <color name="rallyOrange">#FF6859</color>
+    <color name="rallyYellow">#FFCF44</color>
+    <color name="rallyPurple">#B15DFF</color>
+    <color name="rallyBlue">#70DEFF</color>
+
+    <color name="calmGray">#EDF0F5</color>
+    <color name="calmGrayDark">#969CAC</color>
+
+    <color name="lucency">#00000000</color>
+    <color name="lucencyBlack">#A9000000</color>
+    <color name="lucencyBlackLight">#3C000000</color>
+    <color name="lucencyWhite">#60FFFFFF</color>
+</resources>

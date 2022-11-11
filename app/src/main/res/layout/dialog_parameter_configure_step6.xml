@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.jizhenkeji.mainnetinspection.common.InspectionParameterConverter"/>
+        <variable name="horizontalDistance" type="androidx.databinding.ObservableFloat"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/closeMenuButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/close_button_white" />
+
+        <TextView
+            android:id="@+id/horizontalDistanceToLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/choose_horizontal_distance"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/closeMenuButton" />
+
+        <SeekBar
+            android:id="@+id/horizontalDistanceToLineSeekBar"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:max="6"
+            android:progress="@={InspectionParameterConverter.horizontalDistanceFloatToProgressInt(horizontalDistance)}"
+            android:progressTint="@color/white"
+            android:thumbTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/horizontalDistanceToLine"
+            app:layout_constraintEnd_toStartOf="@+id/horizontalDistanceToLineNum"
+            app:layout_constraintStart_toEndOf="@+id/horizontalDistanceToLine"
+            app:layout_constraintTop_toTopOf="@+id/horizontalDistanceToLine" />
+
+        <TextView
+            android:id="@+id/horizontalDistanceToLineNum"
+            android:textColor="@color/white"
+            android:textSize="@dimen/body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:text='@{String.valueOf(horizontalDistance) + " m"}'
+            app:layout_constraintBottom_toBottomOf="@+id/horizontalDistanceToLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/horizontalDistanceToLine" />
+
+        <TextView
+            android:id="@+id/horizontalDistanceToLineDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="25dp"
+            android:singleLine="false"
+            android:text="@string/horizontal_distance_description"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/horizontalDistanceToLineSeekBar"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/horizontalDistancePrompt"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:alpha="0.7"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/next"
+            app:layout_constraintStart_toEndOf="@+id/prev"
+            app:layout_constraintTop_toBottomOf="@+id/horizontalDistanceToLineDescription"
+            app:srcCompat="@drawable/horizontal_distance_prompt" />
+
+        <Button
+            android:id="@+id/prev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="16dp"
+            android:background="@null"
+            android:drawableStart="@drawable/prev"
+            android:drawablePadding="10dp"
+            android:text="@string/prev_step"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="16dp"
+            android:background="@null"
+            android:drawableEnd="@drawable/next"
+            android:text="@string/next_step"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:drawablePadding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
